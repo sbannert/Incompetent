@@ -7,9 +7,11 @@ public class ShockWaveScript : MonoBehaviour {
 
     [SerializeField]
     float speed;
-	
-	// Update is called once per frame
-	void Update () {
+    [SerializeField]
+    string obstacle;
+
+    // Update is called once per frame
+    void Update () {
         transform.Translate(Vector3.left * Time.deltaTime * speed);
 	}
 
@@ -19,10 +21,10 @@ public class ShockWaveScript : MonoBehaviour {
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        /*if(collision.gameObject.name == "Floor")
+        if(collision.gameObject.tag == "Floor")
         {
             Debug.Log("collided with obstacle");
             Destroy(gameObject);
-        }*/
+        }
     }
 }
