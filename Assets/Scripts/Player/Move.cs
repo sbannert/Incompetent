@@ -14,9 +14,9 @@ public class Move : MonoBehaviour
     //animations
     public GameObject idleAnimation;
     public GameObject moveRightAnimation;
-    public GameObject glideLeftAnimation;
     public GameObject jumpAnimation;
     public GameObject moveLeftAnimation;
+    public GameObject glideLeftAnimation;
     public GameObject glideRightAnimation;
     /*this bool is to tell us whether you are on the ground or not
      * the layermask lets you select a layer to be ground; you will need to create a layer named ground(or whatever you like) and assign your
@@ -52,7 +52,7 @@ public class Move : MonoBehaviour
         moveLeftAnimation.SetActive(false);
         glideRightAnimation.SetActive(false);
         glideLeftAnimation.SetActive(false);
-        idleAnimation.SetActive(true);
+        idleAnimation.SetActive(false);
         Debug.Log("loaded");
     }
 
@@ -196,15 +196,18 @@ public class Move : MonoBehaviour
         {       
             moveRightAnimation.SetActive(false);
             moveLeftAnimation.SetActive(false);
-            glideRightAnimation.SetActive(true);
-            glideLeftAnimation.SetActive(true);
+
             if (Input.GetAxis("MovementX") > 0.0f)
             {
-                glideRightAnimation.SetActive(true);
+                glideLeftAnimation.SetActive(true);                
             }
-            if (Input.GetAxis("MovementX") < 0.0f)
+            else if (Input.GetAxis("MovementX") < 0.0f)
             {
-                glideLeftAnimation.SetActive(true);
+                glideRightAnimation.SetActive(true);               
+            }
+            else
+            {
+                glideRightAnimation.SetActive(true);
             }
             rb.velocity = new Vector3(0.0f, glideForce, 0.0f);
             glide = false;          
