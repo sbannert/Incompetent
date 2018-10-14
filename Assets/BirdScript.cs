@@ -36,12 +36,15 @@ public class BirdScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (rb.position.x > left)
+        //Debug.Log(rb.position.x);
+        if (rb.position.x >= right)
         {
+            transform.position = new Vector3(right - 0.1f, rb.position.y, rb.position.z);
             speed = speed * -1;
         }
-        if (rb.position.x < right)
+        if (rb.position.x <= left)
         {
+            transform.position = new Vector3(left + 0.1f, rb.position.y, rb.position.z);
             speed = speed * -1;
         }
 
