@@ -12,8 +12,7 @@ public class Move : MonoBehaviour
     public float jumpTime;
     public float jumpTimeCounter;
     //animations
-    public Animation idleAnimation;
-    public GameObject idle;
+    public Transform idleAnimation;
     public Transform moveAnimation;
     public Transform glideAnimation;
     public Transform jumpAnimation;
