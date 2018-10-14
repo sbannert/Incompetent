@@ -15,4 +15,11 @@ public class MainMenuScript : MonoBehaviour {
         Application.Quit();
     }
 
+    private void Update()
+    {
+        if (Input.GetButton("Left Click"))
+        {
+            PlayGame();
+        }
+    }
 }
