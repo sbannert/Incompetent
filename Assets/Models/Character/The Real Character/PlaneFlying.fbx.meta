@@ -10,11 +10,11 @@ ModelImporter:
     7400000: Plane|Circle
     7400002: Plane|Circle.002
     7400004: Plane|Circle.004
-    7400006: Plane|Cube.004Action.003
-    7400008: Plane|Flying
-    7400010: Plane|Plane
-    7400012: Plane|PlaneAction
-    7400014: Plane|PlaneAction.001
+    7400006: Plane|Flying
+    7400008: Plane|Plane
+    7400010: Plane|PlaneAction
+    7400012: Plane|PlaneAction.001
+    7400014: Plane|Rolling
     7400016: Plane|Spring
     7400018: Plane|Spring.001
     7400020: Plane|Spring.003
@@ -50,39 +50,11 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Plane|Flying
-      takeName: Plane|Flying
-      firstFrame: 0
-      lastFrame: 15
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -102,7 +74,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.005
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

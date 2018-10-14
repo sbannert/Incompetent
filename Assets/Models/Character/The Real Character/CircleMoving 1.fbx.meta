@@ -4,21 +4,9 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cube
-    100004: Hemi
-    100006: Plane
-    100008: Plane.001
     400000: //RootNode
-    400002: Cube
-    400004: Hemi
-    400006: Plane
-    400008: Plane.001
-    2100000: Material.007
-    2100002: Material
-    2100004: No Name
+    2100000: No Name
     4300000: Plane
-    4300002: Cube
-    4300004: Plane.001
     7400000: Plane|Circle
     7400002: Plane|Circle.002
     7400004: Plane|Circle.004
@@ -33,25 +21,8 @@ ModelImporter:
     7400022: Plane|Spring.004
     7400024: Plane|Spring.006
     7400026: Plane|Spring.007
-    7400028: Plane.001|Circle
-    7400030: Plane.001|Circle.002
-    7400032: Plane.001|Circle.004
-    7400034: Plane.001|Flying
-    7400036: Plane.001|Plane
-    7400038: Plane.001|PlaneAction
-    7400040: Plane.001|PlaneAction.001
-    7400042: Plane.001|Rolling
-    7400044: Plane.001|Spring
-    7400046: Plane.001|Spring.001
-    7400048: Plane.001|Spring.003
-    7400050: Plane.001|Spring.004
-    7400052: Plane.001|Spring.006
-    7400054: Plane.001|Spring.007
     9500000: //RootNode
-    10800000: Hemi
-    13700000: Cube
-    13700002: Plane
-    13700004: Plane.001
+    13700000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1

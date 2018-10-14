@@ -3,19 +3,10 @@ guid: 7fb78fe7ab1e09a4a9fa2a2f8ad5f007
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cube
-    100002: Plane
-    100004: Plane.001
-    100006: //RootNode
-    400000: Cube
-    400002: Plane
-    400004: Plane.001
-    400006: //RootNode
+    100000: //RootNode
+    400000: //RootNode
     2100000: No Name
-    2100002: Material
     4300000: Plane
-    4300002: Cube
-    4300004: Plane.001
     7400000: Plane|Circle
     7400002: Plane|Circle.002
     7400004: Plane|Circle.004
@@ -23,29 +14,15 @@ ModelImporter:
     7400008: Plane|Plane
     7400010: Plane|PlaneAction
     7400012: Plane|PlaneAction.001
-    7400014: Plane|Spring
-    7400016: Plane|Spring.001
-    7400018: Plane|Spring.003
-    7400020: Plane|Spring.004
-    7400022: Plane|Spring.006
-    7400024: Plane|Spring.007
-    7400026: Plane.001|Circle
-    7400028: Plane.001|Circle.002
-    7400030: Plane.001|Circle.004
-    7400032: Plane.001|Flying
-    7400034: Plane.001|Plane
-    7400036: Plane.001|PlaneAction
-    7400038: Plane.001|PlaneAction.001
-    7400040: Plane.001|Spring
-    7400042: Plane.001|Spring.001
-    7400044: Plane.001|Spring.003
-    7400046: Plane.001|Spring.004
-    7400048: Plane.001|Spring.006
-    7400050: Plane.001|Spring.007
+    7400014: Plane|Rolling
+    7400016: Plane|Spring
+    7400018: Plane|Spring.001
+    7400020: Plane|Spring.003
+    7400022: Plane|Spring.004
+    7400024: Plane|Spring.006
+    7400026: Plane|Spring.007
     9500000: //RootNode
-    13700000: Cube
-    13700002: Plane
-    13700004: Plane.001
+    13700000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
