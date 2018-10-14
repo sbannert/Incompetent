@@ -12,10 +12,12 @@ public class Move : MonoBehaviour
     public float jumpTime;
     public float jumpTimeCounter;
     //animations
-    public Transform idleAnimation;
-    public Transform moveAnimation;
-    public Transform glideAnimation;
-    public Transform jumpAnimation;
+    public GameObject idleAnimation;
+    public GameObject moveRightAnimation;
+    public GameObject jumpAnimation;
+    public GameObject moveLeftAnimation;
+    public GameObject glideLeftAnimation;
+    public GameObject glideRightAnimation;
     /*this bool is to tell us whether you are on the ground or not
      * the layermask lets you select a layer to be ground; you will need to create a layer named ground(or whatever you like) and assign your
      * ground objects to this layer.
@@ -45,10 +47,12 @@ public class Move : MonoBehaviour
         end = false;
         glide = false;
         move = false;
-        jumpAnimation.gameObject.SetActive(false);
-        moveAnimation.gameObject.SetActive(false);
-        glideAnimation.gameObject.SetActive(false);
-        idleAnimation.gameObject.SetActive(true);
+        jumpAnimation.SetActive(false);
+        moveRightAnimation.SetActive(false);
+        moveLeftAnimation.SetActive(false);
+        glideRightAnimation.SetActive(false);
+        glideLeftAnimation.SetActive(false);
+        idleAnimation.SetActive(false);
         Debug.Log("loaded");
     }
 
@@ -64,54 +68,70 @@ public class Move : MonoBehaviour
             if (!(Input.GetButton("Jump") || Input.GetButton("Glide") || Input.GetAxis("MovementX") != 0))
             {
                 rb.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                jumpAnimation.SetActive(false);
+                moveRightAnimation.SetActive(false);
+                moveLeftAnimation.SetActive(false);
+                glideRightAnimation.SetActive(false);
+                glideLeftAnimation.SetActive(false);
             }
-            jumpAnimation.gameObject.SetActive(false);
-            idleAnimation.gameObject.SetActive(true);
+            jumpAnimation.SetActive(false);
+            idleAnimation.SetActive(true);
             //the jumpcounter is whatever we set jumptime to in the editor.
             jumpTimeCounter = jumpTime;
         }
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            idleAnimation.gameObject.SetActive(false); //These will be replaced by transitions
-            moveAnimation.gameObject.SetActive(false);
+            idleAnimation.SetActive(false); //These will be replaced by transitions
+            moveRightAnimation.SetActive(false);
+            moveLeftAnimation.SetActive(false);
             start = true;
         }
         if ((Input.GetButton("Jump")) && !stoppedJumping)
         {
-            idleAnimation.gameObject.SetActive(false);
-            moveAnimation.gameObject.SetActive(false);
+            idleAnimation.SetActive(false);
+            moveLeftAnimation.SetActive(false);
+            moveRightAnimation.SetActive(false);
             mid = true;
         }
         if(Input.GetButtonUp("Jump"))
         {
-            idleAnimation.gameObject.SetActive(false);
-            moveAnimation.gameObject.SetActive(false);
+            idleAnimation.SetActive(false);
+            moveRightAnimation.SetActive(false);
+            moveLeftAnimation.SetActive(false);
             end = true;
         }
         if (Input.GetButton("Glide"))
         {
-            jumpAnimation.gameObject.SetActive(false);
-            moveAnimation.gameObject.SetActive(false);
-            idleAnimation.gameObject.SetActive(false);
+            jumpAnimation.SetActive(false);
+            moveRightAnimation.SetActive(false);
+            moveLeftAnimation.SetActive(false);
+            idleAnimation.SetActive(false);
             glide = true;
         }
         if (Input.GetButton("Glide") == false)
         {
-            glideAnimation.gameObject.SetActive(false);
+            glideRightAnimation.SetActive(false);
+            glideLeftAnimation.SetActive(false);
             if (!(grounded))
             {
-                jumpAnimation.gameObject.SetActive(true);
+                jumpAnimation.SetActive(true);
             }
         }
-        if (Input.GetAxis("MovementX") != 0)
+        if (Input.GetAxis("MovementX") > 0)
         {
-            idleAnimation.gameObject.SetActive(false);
+            idleAnimation.SetActive(false);
+            move = true;
+        }
+        if (Input.GetAxis("MovementX") < 0)
+        {
+            idleAnimation.SetActive(false);
             move = true;
         }
         if (!(grounded))
         {
-            moveAnimation.gameObject.SetActive(false);
+            moveRightAnimation.SetActive(false);
+            moveLeftAnimation.SetActive(false);
         }
 
     }
@@ -122,12 +142,20 @@ public class Move : MonoBehaviour
         {
             if(glide == false || grounded == false)
             {
-                glideAnimation.gameObject.SetActive(false);
+                glideRightAnimation.SetActive(false);
+                glideLeftAnimation.SetActive(false);
                 float moveX = Input.GetAxis("MovementX");
                 Vector3 movingVector = new Vector3(moveX * xSpeed, 0.0f, 0.0f);
                 if (grounded)
                 {
-                    moveAnimation.gameObject.SetActive(true);
+                    if (Input.GetAxis("MovementX") > 0.0f)
+                    {
+                        moveRightAnimation.SetActive(true);
+                    }
+                    if (Input.GetAxis("MovementX") < 0.0f)
+                    {
+                        moveLeftAnimation.SetActive(true);
+                    }
                 }
 
                 transform.Translate(movingVector, Space.World);
@@ -139,7 +167,7 @@ public class Move : MonoBehaviour
         {
             //jump!
             rb.velocity = new Vector3(0.0f, jumpForce, 0.0f);
-            jumpAnimation.gameObject.SetActive(true);
+            jumpAnimation.SetActive(true);
             stoppedJumping = false;
             start = false;
         }
@@ -166,15 +194,20 @@ public class Move : MonoBehaviour
         }
         if (glide)
         {       
-            moveAnimation.gameObject.SetActive(false);
-            glideAnimation.gameObject.SetActive(true);
+            moveRightAnimation.SetActive(false);
+            moveLeftAnimation.SetActive(false);
+
             if (Input.GetAxis("MovementX") > 0.0f)
             {
-                glideAnimation.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
+                glideLeftAnimation.SetActive(true);                
             }
-            if (Input.GetAxis("MovementX") < 0.0f)
+            else if (Input.GetAxis("MovementX") < 0.0f)
             {
-                glideAnimation.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                glideRightAnimation.SetActive(true);               
+            }
+            else
+            {
+                glideRightAnimation.SetActive(true);
             }
             rb.velocity = new Vector3(0.0f, glideForce, 0.0f);
             glide = false;          
