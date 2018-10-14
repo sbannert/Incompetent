@@ -199,15 +199,17 @@ public class Move : MonoBehaviour
 
             if (Input.GetAxis("MovementX") > 0.0f)
             {
+                glideRightAnimation.SetActive(false);
                 glideLeftAnimation.SetActive(true);                
             }
             else if (Input.GetAxis("MovementX") < 0.0f)
             {
+                glideLeftAnimation.SetActive(false);
                 glideRightAnimation.SetActive(true);               
             }
             else
             {
-                glideRightAnimation.SetActive(true);
+                glideLeftAnimation.SetActive(true);
             }
             rb.velocity = new Vector3(0.0f, glideForce, 0.0f);
             glide = false;          
