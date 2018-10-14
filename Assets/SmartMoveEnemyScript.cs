@@ -12,11 +12,14 @@ public class SmartMoveEnemyScript : MonoBehaviour
     float left;
     [SerializeField]
     float right;
+    [SerializeField]
+    AudioClip crash;
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //speed = 2;
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = crash;
     }
 
     private void FixedUpdate()
@@ -51,7 +54,11 @@ public class SmartMoveEnemyScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GetComponent<AudioSource>().Play();
+            Invoke("restart", 0.1f);//this will happen after 2 seconds
         }
+    }
+    private void restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
